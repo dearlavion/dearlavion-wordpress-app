@@ -1,1 +1,33 @@
 .idea/*
+
+# macOS
+.DS_Store
+
+# Ignore entire WordPress core
+wordpress/wp-admin/
+wordpress/wp-includes/
+wordpress/*.php
+wordpress/*.html
+wordpress/*.txt
+wordpress/.htaccess
+
+# Keep wp-content but control it below
+!wordpress/wp-content/
+
+# Inside wp-content
+wordpress/wp-content/uploads/
+wordpress/wp-content/cache/
+wordpress/wp-content/plugins/
+
+# Allow themes (your actual code)
+!wordpress/wp-content/themes/
+
+# Allow custom plugins (optional)
+!wordpress/wp-content/plugins/your-custom-plugin/
+
+# Ignore index placeholders
+wordpress/wp-content/index.php
+wordpress/wp-content/themes/index.php
+
+# Logs
+*.log
