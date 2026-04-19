@@ -23,7 +23,7 @@ get_header();
             'post_status' => 'publish'
         ],
         'post_title' => true,
-        'field_groups' => [293],
+        'field_groups' => [13],
         'submit_value' => 'Create Event',
         'updated_message' => 'Event created successfully!',
         'return' => '/events'
