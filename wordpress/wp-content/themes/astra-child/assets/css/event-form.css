@@ -1,0 +1,81 @@
+/* =========================
+   EVENT FORM (SCOPED)
+   ========================= */
+
+.event-form-wrapper {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Main form container */
+.event-form-wrapper .event-acf-form {
+    background: #fff;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Each ACF field block */
+.event-form-wrapper .acf-field {
+    background: #fafafa;
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+/* Labels */
+.event-form-wrapper .acf-label label {
+    font-weight: 600;
+    margin-bottom: 6px;
+    display: block;
+    color: #333;
+}
+
+/* Inputs */
+.event-form-wrapper input[type="text"],
+.event-form-wrapper input[type="date"],
+.event-form-wrapper input[type="email"],
+.event-form-wrapper textarea,
+.event-form-wrapper select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: all 0.2s ease;
+    font-size: 14px;
+}
+
+/* Focus state */
+.event-form-wrapper input:focus,
+.event-form-wrapper textarea:focus,
+.event-form-wrapper select:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.12);
+    outline: none;
+}
+
+/* Submit button */
+.event-form-wrapper input[type="submit"] {
+    background: #4f46e5;
+    color: #fff;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+}
+
+.event-form-wrapper input[type="submit"]:hover {
+    background: #3730a3;
+}
+
+/* Optional: spacing between groups/tabs */
+.event-form-wrapper .acf-fields > .acf-field {
+    margin-bottom: 10px;
+}

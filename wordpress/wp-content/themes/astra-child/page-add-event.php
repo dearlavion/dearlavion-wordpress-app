@@ -11,7 +11,7 @@ get_header();
 //}
 //?>
 
-<section style="max-width:800px;margin:40px auto;padding:20px;">
+<section class="event-form-wrapper">
 
     <h1>Create Event</h1>
 
@@ -22,10 +22,13 @@ get_header();
             'post_type' => 'event',
             'post_status' => 'publish'
         ],
-        'post_title' => true,
-        'field_groups' => [13],
+        //disable wordpress fields
+        //'post_title' => true,
+        //'post_content' => true,
         'submit_value' => 'Create Event',
-        'updated_message' => 'Event created successfully!',
+        'form_attributes' => [
+            'class' => 'event-acf-form'
+        ],
         'return' => '/events'
     ]);
     ?>
