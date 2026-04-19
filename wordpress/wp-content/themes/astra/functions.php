@@ -212,38 +212,3 @@ require_once ASTRA_THEME_DIR . 'inc/abilities/bootstrap.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-filters.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
-
-// --------------------------------------------
-// Custom Event Settings (Your Code)
-// --------------------------------------------
-
-// Disable Gutenberg for Event post type
-add_filter('use_block_editor_for_post_type', function($use, $post_type) {
-    if ($post_type === 'event') {
-        return false;
-    }
-    return $use;
-}, 10, 2);
-
-// Remove editor support
-add_action('init', function() {
-    remove_post_type_support('event', 'editor');
-});
-
-add_action('acf/save_post', function($post_id) {
-
-    // Only for event post type
-    if (get_post_type($post_id) !== 'event') return;
-
-    // Get ACF field
-    $title = get_field('event_title', $post_id);
-
-    if ($title) {
-        wp_update_post([
-            'ID' => $post_id,
-            'post_title' => $title,
-            'post_status' => 'publish'
-        ]);
-    }
-
-}, 20);
