@@ -1,14 +1,26 @@
 <?php
+
 add_action('wp_enqueue_scripts', function () {
+
+    // Parent theme
     wp_enqueue_style(
         'astra-parent',
         get_template_directory_uri() . '/style.css'
     );
 
+    // Child theme
     wp_enqueue_style(
         'astra-child',
         get_stylesheet_uri(),
         ['astra-parent']
+    );
+
+    // Event form CSS (scoped)
+    wp_enqueue_style(
+        'event-form',
+        get_stylesheet_directory_uri() . '/assets/css/event-form.css',
+        ['astra-child'],
+        '1.0.0'
     );
 });
 
@@ -59,12 +71,19 @@ add_action('acf/save_post', function($post_id) {
 
 }, 20);
 
-// scoped CSS
-add_action('wp_enqueue_scripts', function() {
-    wp_enqueue_style(
-        'event-form',
-        get_stylesheet_directory_uri() . '/assets/css/event-form.css',
-        [],
-        '1.0.0'
-    );
-});
+add_action('acf/save_post', function($post_id) {
+
+    // Only run for event post type
+    if (get_post_type($post_id) !== 'event') return;
+
+    // Get ACF field value
+    $title = get_field('event_title', $post_id);
+
+    if ($title) {
+        wp_update_post([
+            'ID' => $post_id,
+            'post_title' => $title
+        ]);
+    }
+
+}, 20);

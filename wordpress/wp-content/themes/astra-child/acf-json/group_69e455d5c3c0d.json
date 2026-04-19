@@ -5,7 +5,7 @@
         {
             "key": "field_69e455d5a3752",
             "label": "Title",
-            "name": "title",
+            "name": "event_title",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -26,7 +26,7 @@
         {
             "key": "field_69e455f3a3753",
             "label": "Body",
-            "name": "body",
+            "name": "event_body",
             "aria-label": "",
             "type": "text",
             "instructions": "",
@@ -106,5 +106,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1776605980
+    "modified": 1776608700
 }
