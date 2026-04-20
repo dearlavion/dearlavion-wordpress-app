@@ -1,0 +1,66 @@
+/* =========================
+   EVENT TABLE
+   ========================= */
+
+.event-table-wrapper {
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* Table */
+.event-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Header */
+.event-table thead {
+    background: #4f46e5;
+    color: white;
+}
+
+.event-table th,
+.event-table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Rows */
+.event-table tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+.event-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+/* Links */
+.event-table a {
+    color: #4f46e5;
+    text-decoration: none;
+}
+
+/* Pagination */
+.event-pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.event-pagination a,
+.event-pagination span {
+    margin: 0 5px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+}
+
+.event-pagination .current {
+    background: #4f46e5;
+    color: #fff;
+    border-color: #4f46e5;
+}

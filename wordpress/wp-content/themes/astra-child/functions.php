@@ -22,6 +22,14 @@ add_action('wp_enqueue_scripts', function () {
         ['astra-child'],
         '1.0.0'
     );
+
+    // Event list CSS
+    wp_enqueue_style(
+        'event-list',
+        get_stylesheet_directory_uri() . '/assets/css/event-list.css',
+        ['astra-child'],
+        '1.0.0'
+    );
 });
 
 // Save ACF field groups to theme

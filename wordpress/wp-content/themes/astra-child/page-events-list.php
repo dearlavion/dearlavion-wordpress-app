@@ -3,25 +3,71 @@
 get_header();
 ?>
 
-<section style="max-width:800px;margin:40px auto;">
+<section class="event-table-wrapper">
 
-<h1>Events</h1>
+    <h1>Events</h1>
 
-<?php
-$query = new WP_Query([
-    'post_type' => 'event',
-    'posts_per_page' => -1
-]);
+    <?php
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
 
-while ($query->have_posts()) : $query->the_post(); ?>
+    $query = new WP_Query([
+        'post_type' => 'event',
+        'posts_per_page' => 5, // 👈 change per page
+        'paged' => $paged,
+        'post_status' => 'publish'
+    ]);
+    ?>
 
-    <div style="margin-bottom:20px;">
-        <h2><a href="<?php the_permalink(); ?>">
-            <?php the_title(); ?>
-        </a></h2>
-    </div>
+    <?php if ($query->have_posts()) : ?>
 
-<?php endwhile; wp_reset_postdata(); ?>
+        <table class="event-table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <?php while ($query->have_posts()) : $query->the_post(); ?>
+
+                    <?php
+                    $start = get_field('start_date');
+                    $end   = get_field('end_date');
+                    ?>
+
+                    <tr>
+                        <td><?php the_title(); ?></td>
+                        <td><?php echo $start ?: '-'; ?></td>
+                        <td><?php echo $end ?: '-'; ?></td>
+                        <td>
+                            <a href="<?php the_permalink(); ?>">View</a>
+                        </td>
+                    </tr>
+
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+
+        <!-- Pagination -->
+        <div class="event-pagination">
+            <?php
+            echo paginate_links([
+                'total' => $query->max_num_pages,
+                'current' => $paged,
+                'prev_text' => '← Prev',
+                'next_text' => 'Next →'
+            ]);
+            ?>
+        </div>
+
+    <?php else: ?>
+        <p>No events found.</p>
+    <?php endif; ?>
+
+    <?php wp_reset_postdata(); ?>
 
 </section>
 
